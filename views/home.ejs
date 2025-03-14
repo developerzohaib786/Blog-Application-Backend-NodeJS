@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head.ejs") %>
+    <title>HomePage</title>
+</head>
+<body>
+    <%- include("./partials/nav.ejs") %>
+<!-- <%= JSON.stringify(blogs) %> -->
+
+<div class="container row m-4">
+    <% blogs.forEach(blog=> { %>
+        <div class="card m-3" style="max-width: 540px;">
+            <div class="row g-4">
+              <div class="col-md-4">
+<a href="/blog/<%=blog.id%>"><img src="<%= blog.coverImageURL %>" class="img-fluid rounded-start" ></a>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title"><%= blog.title %></h5>
+                  <p class="card-text"><small class="text-body-secondary">Last updated <%=new Date(blog.createdAt).toLocaleDateString() %></small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+</div>
+
+<%- include("./partials/scripts.ejs") %>
+</body>
+</html>
